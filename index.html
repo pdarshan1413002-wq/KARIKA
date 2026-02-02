@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Karika ❤️</title>
+
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff4e8a, #ff9aa2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+  }
+
+  .screen {
+    display: none;
+    animation: fadeIn 1.5s ease;
+  }
+  .active { display: block; }
+
+  h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px #ff0033;
+  }
+
+  p { font-size: 1.3rem; }
+
+  .btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 15px;
+  }
+
+  .yes {
+    background: white;
+    color: #ff3366;
+  }
+
+  .no {
+    background: #ff0033;
+    color: white;
+    position: absolute;
+  }
+
+  .photo {
+    width: 220px;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+  }
+
+  .heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 5s linear infinite;
+  }
+
+  @keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Background Music (plays ONLY after YES) -->
+<audio id="music" loop preload="auto">
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Screen 1 -->
+<div class="screen active" id="screen1">
+  <h1>Hey Karika ❤️</h1>
+  <p>I have something special for you…</p>
+  <button class="btn yes" onclick="goNext()">Tap here 💖</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="screen2">
+  <h1>Karika 💕</h1>
+  <p>Will you be my Valentine? 🌹</p>
+
+  <button class="btn yes" onclick="yesClicked()">YES 💘</button>
+  <button class="btn no" id="noBtn">NO 😝</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="screen3">
+  <h1>Yayyy 💖</h1>
+
+  <!-- 📸 PHOTO HERE -->
+  <img src="photo.jpg" class="photo" alt="Us ❤️">
+
+  <p>You just made my Valentine perfect, Karika 🌹</p>
+</div>
+
+<script>
+  const music = document.getElementById("music");
+  const noBtn = document.getElementById("noBtn");
+
+  function goNext() {
+    document.getElementById("screen1").classList.remove("active");
+    document.getElementById("screen2").classList.add("active");
+    moveNoButton();
+  }
+
+  function moveNoButton() {
+    noBtn.style.left = Math.random() * 70 + "vw";
+    noBtn.style.top = Math.random() * 70 + "vh";
+  }
+
+  // NO button bhaagta rahe 😂
+  noBtn.addEventListener("mouseover", moveNoButton);
+  noBtn.addEventListener("click", moveNoButton);
+
+  function yesClicked() {
+    document.getElementById("screen2").classList.remove("active");
+    document.getElementById("screen3").classList.add("active");
+
+    music.play();      // 🎵 MUSIC STARTS HERE
+    startHearts();
+  }
+
+  function startHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 2 + 1) + "rem";
+      heart.textContent = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+  }
+</script>
+
+</body>
+</html>
