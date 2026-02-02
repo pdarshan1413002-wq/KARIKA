@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Karika 🤍</title>
+<title>For Rasmalai 🤍</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -26,15 +26,12 @@ body{
     align-items:center;
     flex-direction:column;
     text-align:center;
+    position:relative;
 }
 .active{display:flex;}
 
-/* ===== BACKGROUNDS (NO EXTERNAL FILES) ===== */
-.bg1{
-    background:linear-gradient(135deg,#ff4d6d,#ff8fab);
-    color:white;
-}
-
+/* ===== BACKGROUNDS ===== */
+.bg1{background:linear-gradient(135deg,#ff4d6d,#ff8fab);color:white;}
 .bg2{
     background:
     radial-gradient(circle at 10% 20%, #ffd1dc 0%, transparent 40%),
@@ -42,7 +39,6 @@ body{
     linear-gradient(135deg,#ffe6eb,#ffd1dc);
     color:#ff4d6d;
 }
-
 .bg3{
     background:
     radial-gradient(circle at 20% 30%, #ffccd5 0%, transparent 45%),
@@ -50,7 +46,6 @@ body{
     linear-gradient(135deg,#ffdee9,#ffb6c1);
     color:#ff4d6d;
 }
-
 .bg4{
     background:
     radial-gradient(circle at 15% 25%, #ff8fab 0%, transparent 40%),
@@ -63,7 +58,7 @@ body{
 h1{
     font-family:'Pacifico',cursive;
     font-size:3rem;
-    margin-bottom:20px;
+    margin-bottom:15px;
 }
 p{font-size:1.2rem;margin-bottom:15px;}
 
@@ -102,15 +97,29 @@ button{
     cursor:pointer;
 }
 
-/* ===== IMAGE ===== */
-img{
-    width:260px;
+/* ===== FINAL PAGE PHOTOS ===== */
+.center-photo{
+    width:220px;
     border-radius:22px;
     box-shadow:0 0 35px rgba(255,255,255,0.7);
-    margin:20px 0;
+    margin:15px 0;
+    z-index:2;
 }
 
-/* ===== FLOATING HEARTS ===== */
+.corner{
+    position:absolute;
+    width:100px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    opacity:0.9;
+}
+
+.tl{top:20px;left:20px;}
+.tr{top:20px;right:20px;}
+.bl{bottom:20px;left:20px;}
+.br{bottom:20px;right:20px;}
+
+/* ===== HEARTS ===== */
 .heart{
     position:fixed;
     bottom:-10px;
@@ -125,32 +134,53 @@ img{
 
 <body>
 
+<!-- SCREEN 1 -->
 <div class="screen bg1 active" id="s1">
-    <h1>Hey Karika 🤍</h1>
+    <h1>Hey Rasmalai 🤍</h1>
     <p>I have something special for you</p>
     <button class="yes" onclick="go(2)">Tap here 💖</button>
 </div>
 
+<!-- SCREEN 2 -->
 <div class="screen bg2" id="s2">
     <h1>Are you really ready<br>my rasmalai? 🤍</h1>
     <button class="yes" onclick="go(3)">YES 💕</button>
 </div>
 
+<!-- SCREEN 3 -->
 <div class="screen bg3" id="s3">
     <p class="instruction">Tap the box below 👇</p>
     <div class="box" onclick="showConfession()">Click me 🤍</div>
 </div>
 
+<!-- SCREEN 4 -->
 <div class="screen bg4" id="s4">
     <h1>Will you be my Valentine? 💘</h1>
     <button class="yes" onclick="yesClicked()">YES 💕</button>
     <button class="no" id="noBtn" onclick="moveNo()">NO 😅</button>
 </div>
 
+<!-- SCREEN 5 FINAL -->
 <div class="screen bg4" id="s5">
-    <h1>Yayyy 🤍</h1>
-    <img src="photo.png">
-    <p>You just made my Valentine perfect, Karika 🌹</p>
+
+    <!-- Corner photos -->
+    <img src="pic1.png" class="corner tl">
+    <img src="pic2.png" class="corner tr">
+    <img src="pic3.png" class="corner bl">
+    <img src="pic4.png" class="corner br">
+
+    <h1>I Love You 🤍</h1>
+
+    <img src="photo.png" class="center-photo">
+
+    <p>
+        My rasmalai 🤍<br>
+        You are my comfort, my happiness,<br>
+        my favorite thought every day.<br>
+        With you, everything feels right.<br>
+        I choose you. Always. 💞
+    </p>
+
     <audio id="music" src="romantic.mp3"></audio>
 </div>
 
