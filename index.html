@@ -2,114 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Karika ❤️</title>
+<title>For Karika 🤍</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    height: 100vh;
-    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', Arial, sans-serif;
-    color: white;
-    text-align: center;
-    overflow: hidden;
+body{
+    height:100vh;
+    width:100vw;
+    font-family:'Poppins', sans-serif;
+    overflow:hidden;
 }
 
-/* Containers */
-.container {
-    padding: 20px;
+/* ================= SCREENS ================= */
+.screen{
+    display:none;
+    width:100vw;
+    height:100vh;
+    padding:30px;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
 
-/* Headings */
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+.active{
+    display:flex;
 }
 
-/* Paragraph */
-p {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin: 15px 0;
+/* ================= BACKGROUNDS ================= */
+.bg1{
+    background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+    color:white;
 }
 
-/* Buttons */
-button {
-    padding: 14px 30px;
-    font-size: 20px;
-    font-weight: 600;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 10px;
-    transition: transform 0.2s ease;
+.bg2{
+    background:#fff0f5 url("https://www.transparenttextures.com/patterns/hearts.png");
+    color:#ff4d6d;
 }
 
-button:active {
-    transform: scale(0.95);
+.bg3{
+    background:linear-gradient(135deg,#ffafbd,#ffc3a0);
+    color:white;
 }
 
-#startBtn {
-    background: white;
-    color: #ff4d6d;
+.bg4{
+    background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+    color:white;
 }
 
-#yesBtn {
-    background: #2ecc71;
-    color: white;
+/* ================= TEXT ================= */
+h1{
+    font-family:'Pacifico', cursive;
+    font-size:3rem;
+    margin-bottom:20px;
 }
 
-#noBtn {
-    background: #e74c3c;
-    color: white;
-    position: relative;
+p{
+    font-size:1.2rem;
+    margin-bottom:15px;
 }
 
-/* Image */
-img {
-    width: 260px;
-    max-width: 85%;
-    border-radius: 20px;
-    margin: 20px auto;
-    display: block;
-    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+/* ================= BUTTONS ================= */
+button{
+    padding:14px 32px;
+    font-size:18px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    margin:10px;
+    font-weight:600;
 }
 
-/* Hidden screens */
-.hidden {
-    display: none;
+.yes{
+    background:#2ecc71;
+    color:white;
 }
 
-/* Floating hearts */
-.heart {
-    position: fixed;
-    bottom: -10px;
-    font-size: 22px;
-    animation: float 4s linear infinite;
+.no{
+    background:#e74c3c;
+    color:white;
+    position:absolute;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh);
-        opacity: 0;
+/* ================= CONFESSION BOX ================= */
+.instruction{
+    margin-bottom:20px;
+    font-size:1.1rem;
+}
+
+.box{
+    background:white;
+    color:#ff4d6d;
+    padding:30px;
+    border-radius:20px;
+    max-width:90%;
+    font-family:'Pacifico', cursive;
+    font-size:1.4rem;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    cursor:pointer;
+}
+
+/* ================= IMAGE ================= */
+img{
+    width:260px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,255,255,0.7);
+    margin:20px 0;
+}
+
+/* ================= HEARTS ================= */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:22px;
+    animation:float 4s linear infinite;
+}
+
+@keyframes float{
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
     }
 }
 </style>
@@ -117,67 +137,95 @@ img {
 
 <body>
 
-<div class="container">
+<!-- ========== SCREEN 1 ========= -->
+<div class="screen bg1 active" id="s1">
+    <h1>Hey Karika 🤍</h1>
+    <p>I have something special for you</p>
+    <button class="yes" onclick="go(2)">Tap here 💖</button>
+</div>
 
-    <!-- Screen 1 -->
-    <div id="screen1">
-        <h1>Hey Karika ❤️</h1>
-        <p>I have something special for you</p>
-        <button id="startBtn" onclick="nextScreen()">Tap here 💖</button>
-    </div>
+<!-- ========== SCREEN 2 ========= -->
+<div class="screen bg2" id="s2">
+    <h1>Are you really ready<br>my rasmalai? 🤍</h1>
+    <button class="yes" onclick="go(3)">YES 💕</button>
+</div>
 
-    <!-- Screen 2 -->
-    <div id="screen2" class="hidden">
-        <h1>Will you be my Valentine? 💘</h1>
-        <button id="yesBtn" onclick="yesClicked()">YES 💕</button>
-        <button id="noBtn" onmouseover="moveNo()">NO 😅</button>
-    </div>
+<!-- ========== SCREEN 3 ========= -->
+<div class="screen bg3" id="s3">
+    <p class="instruction">Tap the box below 👇</p>
+    <div class="box" onclick="showConfession()">Click me 🤍</div>
+</div>
 
-    <!-- Screen 3 -->
-    <div id="screen3" class="hidden">
-        <h1>Yayyy 💖</h1>
+<!-- ========== SCREEN 4 ========= -->
+<div class="screen bg4" id="s4">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button class="yes" onclick="yesClicked()">YES 💕</button>
+    <button class="no" id="noBtn" onclick="moveNo()">NO 😅</button>
+</div>
 
-        <img src="photo.png" alt="Us ❤️">
-
-        <p>You just made my Valentine perfect, Karika 🌹</p>
-
-        <audio id="music" src="romantic.mp3"></audio>
-    </div>
-
+<!-- ========== SCREEN 5 ========= -->
+<div class="screen bg4" id="s5">
+    <h1>Yayyy 🤍</h1>
+    <img src="photo.png" alt="Us 🤍">
+    <p>You just made my Valentine perfect, Karika 🌹</p>
+    <audio id="music" src="romantic.mp3"></audio>
 </div>
 
 <script>
-function nextScreen() {
-    document.getElementById("screen1").classList.add("hidden");
-    document.getElementById("screen2").classList.remove("hidden");
+/* ===== PAGE NAVIGATION ===== */
+function go(n){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+    document.getElementById("s"+n).classList.add("active");
 }
 
-function moveNo() {
-    const btn = document.getElementById("noBtn");
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
-    btn.style.transform = `translate(${x}px, ${y}px)`;
+/* ===== CONFESSION ===== */
+function showConfession(){
+    const box=document.querySelector(".box");
+    box.innerHTML=`Hey!<br><br>
+    My cutuuu babyyy 🤍<br>
+    My rasmalai 🤍<br><br>
+    You stole my heart and now I won't let you go that easy.`;
+
+    setTimeout(()=>go(4),5000);
 }
 
-function yesClicked() {
-    document.getElementById("screen2").classList.add("hidden");
-    document.getElementById("screen3").classList.remove("hidden");
+/* ===== NO BUTTON LOGIC ===== */
+const noBtn=document.getElementById("noBtn");
+const msgs=[
+    "Are you sure? 😶",
+    "Think again 😏",
+    "Really? 😳",
+    "Last chance 😤",
+    "Okay click again 😅"
+];
+let i=0;
 
+function moveNo(){
+    noBtn.innerText=msgs[i];
+    i=(i+1)%msgs.length;
+
+    const padding=20;
+    const maxX=window.innerWidth-noBtn.offsetWidth-padding;
+    const maxY=window.innerHeight-noBtn.offsetHeight-padding;
+
+    noBtn.style.left=Math.random()*maxX+"px";
+    noBtn.style.top=Math.random()*maxY+"px";
+}
+
+/* ===== FINAL YES ===== */
+function yesClicked(){
+    go(5);
     document.getElementById("music").play();
-    setInterval(createHeart, 300);
+    setInterval(createHeart,300);
 }
 
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 18 + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 4000);
+function createHeart(){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="🤍";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
 }
 </script>
 
