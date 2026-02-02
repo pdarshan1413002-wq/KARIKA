@@ -4,150 +4,181 @@
 <meta charset="UTF-8">
 <title>For Karika ❤️</title>
 
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  body, html {
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff4e8a, #ff9aa2);
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fab);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    font-family: 'Poppins', Arial, sans-serif;
     color: white;
     text-align: center;
-  }
+    overflow: hidden;
+}
 
-  .screen {
-    display: none;
-    animation: fadeIn 1.5s ease;
-  }
-  .active { display: block; }
+/* Containers */
+.container {
+    padding: 20px;
+}
 
-  h1 {
-    font-size: 2.5rem;
-    text-shadow: 0 0 15px #ff0033;
-  }
+/* Headings */
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
 
-  p { font-size: 1.3rem; }
+/* Paragraph */
+p {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 15px 0;
+}
 
-  .btn {
-    padding: 15px 30px;
-    font-size: 1.1rem;
+/* Buttons */
+button {
+    padding: 14px 30px;
+    font-size: 20px;
+    font-weight: 600;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    margin: 15px;
-  }
+    margin: 10px;
+    transition: transform 0.2s ease;
+}
 
-  .yes {
+button:active {
+    transform: scale(0.95);
+}
+
+#startBtn {
     background: white;
-    color: #ff3366;
-  }
+    color: #ff4d6d;
+}
 
-  .no {
-    background: #ff0033;
+#yesBtn {
+    background: #2ecc71;
     color: white;
-    position: absolute;
-  }
+}
 
-  .photo {
-    width: 220px;
+#noBtn {
+    background: #e74c3c;
+    color: white;
+    position: relative;
+}
+
+/* Image */
+img {
+    width: 260px;
+    max-width: 85%;
     border-radius: 20px;
-    margin: 20px 0;
-    box-shadow: 0 0 20px rgba(255,255,255,0.6);
-  }
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+}
 
-  .heart {
-    position: absolute;
-    font-size: 2rem;
-    animation: float 5s linear infinite;
-  }
+/* Hidden screens */
+.hidden {
+    display: none;
+}
 
-  @keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
-  }
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 22px;
+    animation: float 4s linear infinite;
+}
 
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Background Music (plays ONLY after YES) -->
-<audio id="music" loop preload="auto">
-  <source src="romantic.mp3" type="audio/mpeg">
-</audio>
+<div class="container">
 
-<!-- Screen 1 -->
-<div class="screen active" id="screen1">
-  <h1>Hey Karika ❤️</h1>
-  <p>I have something special for you…</p>
-  <button class="btn yes" onclick="goNext()">Tap here 💖</button>
-</div>
+    <!-- Screen 1 -->
+    <div id="screen1">
+        <h1>Hey Karika ❤️</h1>
+        <p>I have something special for you</p>
+        <button id="startBtn" onclick="nextScreen()">Tap here 💖</button>
+    </div>
 
-<!-- Screen 2 -->
-<div class="screen" id="screen2">
-  <h1>Karika 💕</h1>
-  <p>Will you be my Valentine? 🌹</p>
+    <!-- Screen 2 -->
+    <div id="screen2" class="hidden">
+        <h1>Will you be my Valentine? 💘</h1>
+        <button id="yesBtn" onclick="yesClicked()">YES 💕</button>
+        <button id="noBtn" onmouseover="moveNo()">NO 😅</button>
+    </div>
 
-  <button class="btn yes" onclick="yesClicked()">YES 💘</button>
-  <button class="btn no" id="noBtn">NO 😝</button>
-</div>
+    <!-- Screen 3 -->
+    <div id="screen3" class="hidden">
+        <h1>Yayyy 💖</h1>
 
-<!-- Screen 3 -->
-<div class="screen" id="screen3">
-  <h1>Yayyy 💖</h1>
+        <img src="photo.png" alt="Us ❤️">
 
-  <!-- 📸 PHOTO HERE -->
-  <img src="photo.png" class="photo" alt="Us ❤️">
+        <p>You just made my Valentine perfect, Karika 🌹</p>
 
-  <p>You just made my Valentine perfect, Karika 🌹</p>
+        <audio id="music" src="romantic.mp3"></audio>
+    </div>
+
 </div>
 
 <script>
-  const music = document.getElementById("music");
-  const noBtn = document.getElementById("noBtn");
+function nextScreen() {
+    document.getElementById("screen1").classList.add("hidden");
+    document.getElementById("screen2").classList.remove("hidden");
+}
 
-  function goNext() {
-    document.getElementById("screen1").classList.remove("active");
-    document.getElementById("screen2").classList.add("active");
-    moveNoButton();
-  }
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+}
 
-  function moveNoButton() {
-    noBtn.style.left = Math.random() * 70 + "vw";
-    noBtn.style.top = Math.random() * 70 + "vh";
-  }
+function yesClicked() {
+    document.getElementById("screen2").classList.add("hidden");
+    document.getElementById("screen3").classList.remove("hidden");
 
-  // NO button bhaagta rahe 😂
-  noBtn.addEventListener("mouseover", moveNoButton);
-  noBtn.addEventListener("click", moveNoButton);
+    document.getElementById("music").play();
+    setInterval(createHeart, 300);
+}
 
-  function yesClicked() {
-    document.getElementById("screen2").classList.remove("active");
-    document.getElementById("screen3").classList.add("active");
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 18 + "px";
+    document.body.appendChild(heart);
 
-    music.play();      // 🎵 MUSIC STARTS HERE
-    startHearts();
-  }
-
-  function startHearts() {
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (Math.random() * 2 + 1) + "rem";
-      heart.textContent = "❤️";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }, 300);
-  }
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
 </script>
 
 </body>
